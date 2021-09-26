@@ -74,7 +74,7 @@ public class HistorialPanel extends javax.swing.JPanel {
         try{
             //Se crea la conección
             Class.forName("com.mysql.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost/mydb", "root", "");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", "root", "");
             Statement st = con.createStatement();
             String sql = "select * from partida";
             ResultSet rs = st.executeQuery(sql);
