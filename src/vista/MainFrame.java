@@ -3,12 +3,15 @@ package vista;
 public class MainFrame extends javax.swing.JFrame {
     
     private ConfigurarPanel cp;
-    private JugarPanel ju;
+    private Ronda1Panel r1p;
+    private HistorialPanel hp;
+    
     
     public MainFrame() {
         initComponents();
         cp = new ConfigurarPanel();
-        ju = new JugarPanel();
+        r1p = new Ronda1Panel();
+        hp = new HistorialPanel();
     }
 
     /**
@@ -23,7 +26,9 @@ public class MainFrame extends javax.swing.JFrame {
         Configurar = new javax.swing.JMenu();
         configurarJMI = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        jugarJMI = new javax.swing.JMenuItem();
+        jMenu1 = new javax.swing.JMenu();
+        historialJMI = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -43,15 +48,27 @@ public class MainFrame extends javax.swing.JFrame {
 
         jMenu2.setText("Jugar");
 
-        jMenuItem1.setText("jugarJMI");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        jugarJMI.setText("jugar");
+        jugarJMI.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                jugarJMIActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItem1);
+        jMenu2.add(jugarJMI);
 
         jMenuBar1.add(jMenu2);
+
+        jMenu1.setText("Historial");
+
+        historialJMI.setText("Historial");
+        historialJMI.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                historialJMIActionPerformed(evt);
+            }
+        });
+        jMenu1.add(historialJMI);
+
+        jMenuBar1.add(jMenu1);
 
         setJMenuBar(jMenuBar1);
 
@@ -59,11 +76,11 @@ public class MainFrame extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 523, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 816, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 370, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 428, Short.MAX_VALUE)
         );
 
         pack();
@@ -76,12 +93,19 @@ public class MainFrame extends javax.swing.JFrame {
         jPanel1.setVisible(true);
     }//GEN-LAST:event_configurarJMIActionPerformed
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void jugarJMIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jugarJMIActionPerformed
         jPanel1.setVisible(false);
         jPanel1.removeAll();
-        jPanel1.add(ju);
+        jPanel1.add(r1p);
         jPanel1.setVisible(true);
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    }//GEN-LAST:event_jugarJMIActionPerformed
+
+    private void historialJMIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_historialJMIActionPerformed
+        jPanel1.setVisible(false);
+        jPanel1.removeAll();
+        jPanel1.add(hp);
+        jPanel1.setVisible(true);
+    }//GEN-LAST:event_historialJMIActionPerformed
 
     /**
      * @param args the command line arguments
@@ -121,9 +145,11 @@ public class MainFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu Configurar;
     private javax.swing.JMenuItem configurarJMI;
+    private javax.swing.JMenuItem historialJMI;
+    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JMenuItem jugarJMI;
     // End of variables declaration//GEN-END:variables
 }

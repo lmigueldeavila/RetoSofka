@@ -22,22 +22,22 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author lmdem
  */
 @Entity
-@Table(name = "jugador")
+@Table(name = "partida")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Jugador.findAll", query = "SELECT j FROM Jugador j")
-    , @NamedQuery(name = "Jugador.findByIdjugador", query = "SELECT j FROM Jugador j WHERE j.idjugador = :idjugador")
-    , @NamedQuery(name = "Jugador.findByNombreJugador", query = "SELECT j FROM Jugador j WHERE j.nombreJugador = :nombreJugador")
-    , @NamedQuery(name = "Jugador.findByAcumulado", query = "SELECT j FROM Jugador j WHERE j.acumulado = :acumulado")
-    , @NamedQuery(name = "Jugador.findByRondaAlcanzada", query = "SELECT j FROM Jugador j WHERE j.rondaAlcanzada = :rondaAlcanzada")})
-public class Jugador implements Serializable {
+    @NamedQuery(name = "Partida.findAll", query = "SELECT p FROM Partida p")
+    , @NamedQuery(name = "Partida.findByIdpartida", query = "SELECT p FROM Partida p WHERE p.idpartida = :idpartida")
+    , @NamedQuery(name = "Partida.findByNombreJugador", query = "SELECT p FROM Partida p WHERE p.nombreJugador = :nombreJugador")
+    , @NamedQuery(name = "Partida.findByAcumulado", query = "SELECT p FROM Partida p WHERE p.acumulado = :acumulado")
+    , @NamedQuery(name = "Partida.findByRondaAlcanzada", query = "SELECT p FROM Partida p WHERE p.rondaAlcanzada = :rondaAlcanzada")})
+public class Partida implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "idjugador")
-    private Integer idjugador;
+    @Column(name = "idpartida")
+    private Integer idpartida;
     @Basic(optional = false)
     @Column(name = "nombreJugador")
     private String nombreJugador;
@@ -48,26 +48,26 @@ public class Jugador implements Serializable {
     @Column(name = "rondaAlcanzada")
     private int rondaAlcanzada;
 
-    public Jugador() {
+    public Partida() {
     }
 
-    public Jugador(Integer idjugador) {
-        this.idjugador = idjugador;
+    public Partida(Integer idpartida) {
+        this.idpartida = idpartida;
     }
 
-    public Jugador(Integer idjugador, String nombreJugador, int acumulado, int rondaAlcanzada) {
-        this.idjugador = idjugador;
+    public Partida(Integer idpartida, String nombreJugador, int acumulado, int rondaAlcanzada) {
+        this.idpartida = idpartida;
         this.nombreJugador = nombreJugador;
         this.acumulado = acumulado;
         this.rondaAlcanzada = rondaAlcanzada;
     }
 
-    public Integer getIdjugador() {
-        return idjugador;
+    public Integer getIdpartida() {
+        return idpartida;
     }
 
-    public void setIdjugador(Integer idjugador) {
-        this.idjugador = idjugador;
+    public void setIdpartida(Integer idpartida) {
+        this.idpartida = idpartida;
     }
 
     public String getNombreJugador() {
@@ -97,18 +97,18 @@ public class Jugador implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (idjugador != null ? idjugador.hashCode() : 0);
+        hash += (idpartida != null ? idpartida.hashCode() : 0);
         return hash;
     }
 
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Jugador)) {
+        if (!(object instanceof Partida)) {
             return false;
         }
-        Jugador other = (Jugador) object;
-        if ((this.idjugador == null && other.idjugador != null) || (this.idjugador != null && !this.idjugador.equals(other.idjugador))) {
+        Partida other = (Partida) object;
+        if ((this.idpartida == null && other.idpartida != null) || (this.idpartida != null && !this.idpartida.equals(other.idpartida))) {
             return false;
         }
         return true;
@@ -116,7 +116,7 @@ public class Jugador implements Serializable {
 
     @Override
     public String toString() {
-        return "modelo.Jugador[ idjugador=" + idjugador + " ]";
+        return "modelo.Partida[ idpartida=" + idpartida + " ]";
     }
     
 }

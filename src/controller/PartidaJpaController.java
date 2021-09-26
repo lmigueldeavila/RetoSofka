@@ -14,15 +14,15 @@ import javax.persistence.Query;
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
-import modelo.Jugador;
+import modelo.Partida;
 
 /**
  *
  * @author lmdem
  */
-public class JugadorJpaController implements Serializable {
+public class PartidaJpaController implements Serializable {
 
-    public JugadorJpaController(EntityManagerFactory emf) {
+    public PartidaJpaController(EntityManagerFactory emf) {
         this.emf = emf;
     }
     private EntityManagerFactory emf = null;
@@ -31,12 +31,12 @@ public class JugadorJpaController implements Serializable {
         return emf.createEntityManager();
     }
 
-    public void create(Jugador jugador) {
+    public void create(Partida partida) {
         EntityManager em = null;
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            em.persist(jugador);
+            em.persist(partida);
             em.getTransaction().commit();
         } finally {
             if (em != null) {
@@ -45,19 +45,19 @@ public class JugadorJpaController implements Serializable {
         }
     }
 
-    public void edit(Jugador jugador) throws NonexistentEntityException, Exception {
+    public void edit(Partida partida) throws NonexistentEntityException, Exception {
         EntityManager em = null;
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            jugador = em.merge(jugador);
+            partida = em.merge(partida);
             em.getTransaction().commit();
         } catch (Exception ex) {
             String msg = ex.getLocalizedMessage();
             if (msg == null || msg.length() == 0) {
-                Integer id = jugador.getIdjugador();
-                if (findJugador(id) == null) {
-                    throw new NonexistentEntityException("The jugador with id " + id + " no longer exists.");
+                Integer id = partida.getIdpartida();
+                if (findPartida(id) == null) {
+                    throw new NonexistentEntityException("The partida with id " + id + " no longer exists.");
                 }
             }
             throw ex;
@@ -73,14 +73,14 @@ public class JugadorJpaController implements Serializable {
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            Jugador jugador;
+            Partida partida;
             try {
-                jugador = em.getReference(Jugador.class, id);
-                jugador.getIdjugador();
+                partida = em.getReference(Partida.class, id);
+                partida.getIdpartida();
             } catch (EntityNotFoundException enfe) {
-                throw new NonexistentEntityException("The jugador with id " + id + " no longer exists.", enfe);
+                throw new NonexistentEntityException("The partida with id " + id + " no longer exists.", enfe);
             }
-            em.remove(jugador);
+            em.remove(partida);
             em.getTransaction().commit();
         } finally {
             if (em != null) {
@@ -89,19 +89,19 @@ public class JugadorJpaController implements Serializable {
         }
     }
 
-    public List<Jugador> findJugadorEntities() {
-        return findJugadorEntities(true, -1, -1);
+    public List<Partida> findPartidaEntities() {
+        return findPartidaEntities(true, -1, -1);
     }
 
-    public List<Jugador> findJugadorEntities(int maxResults, int firstResult) {
-        return findJugadorEntities(false, maxResults, firstResult);
+    public List<Partida> findPartidaEntities(int maxResults, int firstResult) {
+        return findPartidaEntities(false, maxResults, firstResult);
     }
 
-    private List<Jugador> findJugadorEntities(boolean all, int maxResults, int firstResult) {
+    private List<Partida> findPartidaEntities(boolean all, int maxResults, int firstResult) {
         EntityManager em = getEntityManager();
         try {
             CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
-            cq.select(cq.from(Jugador.class));
+            cq.select(cq.from(Partida.class));
             Query q = em.createQuery(cq);
             if (!all) {
                 q.setMaxResults(maxResults);
@@ -113,20 +113,20 @@ public class JugadorJpaController implements Serializable {
         }
     }
 
-    public Jugador findJugador(Integer id) {
+    public Partida findPartida(Integer id) {
         EntityManager em = getEntityManager();
         try {
-            return em.find(Jugador.class, id);
+            return em.find(Partida.class, id);
         } finally {
             em.close();
         }
     }
 
-    public int getJugadorCount() {
+    public int getPartidaCount() {
         EntityManager em = getEntityManager();
         try {
             CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
-            Root<Jugador> rt = cq.from(Jugador.class);
+            Root<Partida> rt = cq.from(Partida.class);
             cq.select(em.getCriteriaBuilder().count(rt));
             Query q = em.createQuery(cq);
             return ((Long) q.getSingleResult()).intValue();

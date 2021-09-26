@@ -6,10 +6,7 @@ import javax.persistence.Persistence;
 import javax.swing.JOptionPane;
 import modelo.Pregunta;
 
-/**
- *
- * @author lmdem
- */
+
 public class ConfigurarPanel extends javax.swing.JPanel {
     
     private PreguntaJpaController preguntaJpaC;
@@ -33,28 +30,22 @@ public class ConfigurarPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        categoriaJTF = new javax.swing.JTextField();
         preguntaJTF = new javax.swing.JTextField();
         opcion1JTF = new javax.swing.JTextField();
         opcion2JTF = new javax.swing.JTextField();
         opcion3JTF = new javax.swing.JTextField();
         opcion4JTF = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
-        respuestaJTF = new javax.swing.JTextField();
         crearJBtn = new javax.swing.JButton();
+        categoriaJCB = new javax.swing.JComboBox<>();
+        respuestaJCB = new javax.swing.JComboBox<>();
 
         jLabel1.setText("Categoria");
-
-        jLabel2.setText("id Pregunta");
-
-        jLabel3.setText("1, 2, 3, 4 o 5");
 
         jLabel4.setText("Pregunta");
 
@@ -75,53 +66,52 @@ public class ConfigurarPanel extends javax.swing.JPanel {
             }
         });
 
+        categoriaJCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5" }));
+
+        respuestaJCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4" }));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(40, 40, 40)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel8)
                             .addComponent(jLabel7)
                             .addComponent(jLabel6)
                             .addComponent(jLabel5)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel1))
+                            .addComponent(jLabel4))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(categoriaJTF, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel3)
-                                .addGap(69, 69, 69)
-                                .addComponent(jLabel2))
-                            .addComponent(preguntaJTF, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(opcion1JTF, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(opcion2JTF, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(opcion3JTF, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(opcion4JTF, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(preguntaJTF, javax.swing.GroupLayout.PREFERRED_SIZE, 454, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(4, 4, 4)
+                                        .addComponent(categoriaJCB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jLabel9))
+                                    .addComponent(opcion4JTF, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(respuestaJCB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(9, 9, 9)
-                        .addComponent(jLabel9)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(respuestaJTF, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(58, 58, 58)
+                        .addGap(34, 34, 34)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(188, 188, 188)
                         .addComponent(crearJBtn)))
-                .addContainerGap(67, Short.MAX_VALUE))
+                .addContainerGap(72, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(45, 45, 45)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3)
-                    .addComponent(categoriaJTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(preguntaJTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -141,38 +131,53 @@ public class ConfigurarPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
                     .addComponent(opcion4JTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
-                    .addComponent(respuestaJTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(crearJBtn))
-                .addContainerGap(63, Short.MAX_VALUE))
+                .addGap(43, 43, 43)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(categoriaJCB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(respuestaJCB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel9)))
+                .addGap(30, 30, 30)
+                .addComponent(crearJBtn)
+                .addContainerGap(122, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    //método para capturar la información en la interfáz y atribuirla a un 
+    //un objeto p de tipo pregunta.
     private void crearJBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearJBtnActionPerformed
-        //p.setIdpregunta(Integer.parseInt(idpreguntaJTF.getText()));
-        p.setRespuesta(Integer.parseInt(respuestaJTF.getText()));
-        p.setCategoria(Integer.parseInt(categoriaJTF.getText()));
-        p.setPreguntaText(preguntaJTF.getText());
-        p.setOpcion1(opcion1JTF.getText());
-        p.setOpcion2(opcion2JTF.getText());
-        p.setOpcion3(opcion3JTF.getText());
-        p.setOpcion4(opcion4JTF.getText());
-        try{
-            preguntaJpaC.create(p);
-        }catch(Exception e){
-            JOptionPane.showMessageDialog(this, "Ha ocurrido la excepción " + e);
+        if("".equals(opcion1JTF.getText()) || "".equals(opcion2JTF.getText()) || "".equals(opcion3JTF.getText()) || "".equals(opcion4JTF.getText()) || "".equals(preguntaJTF.getText())){    
+            JOptionPane.showMessageDialog(this, "completa todos los campos");
+        }else{    
+            //p = preguntaJpaC.findPregunta(4);
+            p.setRespuesta(respuestaJCB.getSelectedIndex()+1);
+            p.setCategoria(categoriaJCB.getSelectedIndex()+1);
+            p.setPreguntaText(preguntaJTF.getText());
+            p.setOpcion1(opcion1JTF.getText());
+            p.setOpcion2(opcion2JTF.getText());
+            p.setOpcion3(opcion3JTF.getText());
+            p.setOpcion4(opcion4JTF.getText());
+            try{
+                preguntaJpaC.create(p);
+                JOptionPane.showMessageDialog(this, "Pregunta guardada");
+            }catch(Exception e){
+                JOptionPane.showMessageDialog(this, "Ha ocurrido la excepción " + e);
+            }
+            preguntaJTF.setText("");
+            opcion1JTF.setText("");
+            opcion2JTF.setText("");
+            opcion3JTF.setText("");
+            opcion4JTF.setText("");
         }
     }//GEN-LAST:event_crearJBtnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField categoriaJTF;
+    private javax.swing.JComboBox<String> categoriaJCB;
     private javax.swing.JButton crearJBtn;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -184,6 +189,6 @@ public class ConfigurarPanel extends javax.swing.JPanel {
     private javax.swing.JTextField opcion3JTF;
     private javax.swing.JTextField opcion4JTF;
     private javax.swing.JTextField preguntaJTF;
-    private javax.swing.JTextField respuestaJTF;
+    private javax.swing.JComboBox<String> respuestaJCB;
     // End of variables declaration//GEN-END:variables
 }
